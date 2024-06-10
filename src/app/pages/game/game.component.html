@@ -1,0 +1,67 @@
+<section class="bg-neutral-800 w-full h-dvh flex flex-col justify-center items-center lxgw-wenkai-mono-tc-regular">
+	<div *ngIf="isShowModal" class="flex flex-col justify-center items-center absolute bg-zinc-700 w-96 h-48 rounded-3xl text-xl">
+		<div class="flex flex-col justify-center items-center">
+			<div *ngIf="newBlock" class="text-xl text-white">
+				<h1 class="mb-6">
+					Совпадений: {{ newBlock.value }}
+				</h1>
+			</div>
+			<button (click)="tryAgain()" class="p-3 rounded-3xl text-white bg-indigo-600">Try Again</button>
+		</div>
+	</div>
+	<div *ngIf="isWinModal" class="flex flex-col justify-center items-center absolute bg-zinc-700 w-96 h-48 rounded-3xl text-xl">
+		<h1 class="mb-6 text-xl text-white">
+			Победа
+		</h1>
+		<button (click)="playAgain()" class="border-2 p-3 rounded-3xl text-white bg-indigo-600">Play Again</button>
+	</div>
+	<button (click)="toggleDisplay()" class="absolute top-5 right-5">
+		<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+			<path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+		  </svg>		  
+	</button>
+	<div *ngIf="isShow" class="w-1/2 h-full absolute right-0 bg-white">
+		<div class="absolute right-10 top-10">
+			<button (click)="toggleDisplay()" class="text-black w-6 h-6">
+				<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+					<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+				  </svg>			  
+			</button>
+		</div>
+		<div *ngFor="let block of blocks" class="flex flex-row text-3xl ml-8 mt-8">
+			<h1 class="mr-6">
+				{{ block.value1 }} - {{ block.value2 }}
+			</h1>
+		</div>
+	</div>
+	<h2 class="text-4xl text-white font-bold mb-8">{{title}}</h2>
+	<display-component [values]="values"></display-component>
+	<table class="flex justify-center items-center flex-col">
+		<tr>
+			<td>
+				<btn-component (onValue)="onValueEvent($event)" value="1"></btn-component>
+				<btn-component (onValue)="onValueEvent($event)" value="2"></btn-component>
+				<btn-component (onValue)="onValueEvent($event)" value="3"></btn-component>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<btn-component (onValue)="onValueEvent($event)" value="4"></btn-component>
+				<btn-component (onValue)="onValueEvent($event)" value="5"></btn-component>
+				<btn-component (onValue)="onValueEvent($event)" value="6"></btn-component>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<btn-component (onValue)="onValueEvent($event)" value="7"></btn-component>
+				<btn-component (onValue)="onValueEvent($event)" value="8"></btn-component>
+				<btn-component (onValue)="onValueEvent($event)" value="9"></btn-component>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<btn-component (onValue)="onValueEvent($event)" value="0"></btn-component>
+			</td>
+		</tr>
+	</table>
+</section>
